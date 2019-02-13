@@ -1,0 +1,11 @@
+commit 00f86c7600247cbf5cc9d23a4736654b4b2648b4 (HEAD -> master)
+Author: nikitadziadovich <nikita.dziadovich@gmail.com>
+Date:   Wed Feb 13 13:08:01 2019 +0300
+
+    add task1\status.txt
+
+commit f639c423bd7204c20bfd397fa8f6da4aa2378a6b
+Author: nikitadziadovich <nikita.dziadovich@gmail.com>
+Date:   Wed Feb 13 13:04:55 2019 +0300
+
+    add .gitignore
