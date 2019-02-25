@@ -1,9 +1,9 @@
 there are 5 mockups with notes in the folder:
-1. main logged - "Главная / Лента фото постов" for a user ("Main / Photopost tape")
-2. main unlogged - "Главная / Лента фото постов" fro a guest ("Main / Photopost tape")
-3. add edit - "Форма добавления/редактирования фото поста" ("Add/edit photopost form")
-4. authorization - "Форма авторизации" ("Authorization form")
-5. error - "Ошибка" ("Error")
+1. main logged - "ГѓГ«Г ГўГ­Г Гї / Г‹ГҐГ­ГІГ  ГґГ®ГІГ® ГЇГ®Г±ГІГ®Гў" for a user ("Main / Photopost tape")
+2. main unlogged - "ГѓГ«Г ГўГ­Г Гї / Г‹ГҐГ­ГІГ  ГґГ®ГІГ® ГЇГ®Г±ГІГ®Гў" for a guest ("Main / Photopost tape")
+3. add edit - "Г”Г®Г°Г¬Г  Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї/Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї ГґГ®ГІГ® ГЇГ®Г±ГІГ " ("Add/edit photopost form")
+4. authorization - "Г”Г®Г°Г¬Г  Г ГўГІГ®Г°ГЁГ§Г Г¶ГЁГЁ" ("Authorization form")
+5. error - "ГЋГёГЁГЎГЄГ " ("Error")
 on the main form the bottom fo page is shown.
 it actually contains ten posts, but you can only see two last ones.
-it's made for you to see the button "Загрузить еще" 
+it's made for you to see the button "Г‡Г ГЈГ°ГіГ§ГЁГІГј ГҐГ№ГҐ" ("Show more")
