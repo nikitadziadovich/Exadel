@@ -1,4 +1,7 @@
+/*h1 - author.id*/
+/*h2 - filter*/
 /*h3 - tape*/
+/*h4 - date/time*/
 /*h6 - tags*/
 *
 {
@@ -68,9 +71,6 @@ footer, .post, .tag, h2, h3, h1, h6, button.add-tag, button.submit-filter
 	display: -webkit-inline-flex;
 	-webkit-align-items: flex-start;
 	-webkit-justify-content: space-around;
-	/*display: -inline-flex;
-	align-items: flex-start;
-	justify-content: space-around;*/
 	flex-wrap: wrap;
 }
 .post
@@ -78,12 +78,12 @@ footer, .post, .tag, h2, h3, h1, h6, button.add-tag, button.submit-filter
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-.post, input, h5
+.post, input
 {
 	margin-left: 5%;
 	margin-right: 5%;
 }
-input, h5, button.add-tag, button.calendar
+input, button.add-tag, button.calendar
 {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -148,7 +148,7 @@ button.like
 {
 	width: 20%;
 }
-.filter, button.showfilter, h5, input.input-date, input.input-tag
+.filter, button.showfilter, input.input-date, input.input-tag
 {	
 	float: left;
 }
@@ -195,11 +195,11 @@ button.add-tag, button.submit-filter
 	padding-left: 4%;
 	padding-right: 4%;
 }
-h2, h3 /*filter*/
+h2, h3 
 {
 	font-size: 25px;
 }
-h2, h3 /*filter*/, button.submit-filter
+h2, h3 , button.submit-filter
 {
 	width: 100%;
 }
@@ -207,11 +207,11 @@ h2
 {	
 	background-color: #000000;
 }
-h3 /*tape*/
+h3 
 {	
 	background-color: #262626;
 }
-h1 /*author.id*/
+h1 
 {
 	font-size: 20px;
 }
@@ -219,11 +219,11 @@ h1
 {	
 	background-color: #4f4f4f;
 }
-h4 /*date/time*/
+h4 
 {
 	display: inline;
 }
-h5, h6, h4
+h6, h4
 {
 	font-size: 13px;
 }
@@ -231,7 +231,7 @@ h4
 {
 	color: #292929;
 }
-span /*tags*/
+span 
 {
 	color: #31326e;
 }
