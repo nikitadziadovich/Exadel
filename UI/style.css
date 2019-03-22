@@ -1,11 +1,14 @@
-/*h1 - author.id*/
-/*h2 - filter*/
-/*h3 - tape*/
-/*h4 - date/time*/
-/*h6 - tags*/
 *
 {
 	margin: 0px;
+	text-align: center;
+}
+button
+{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+	align-items: center;
 }
 html,
 body 
@@ -30,154 +33,130 @@ header, footer
 {	
 	flex: 0 0 auto;
 }
-main
-{
-	flex: 1 0 auto;
-}
-p
-{
-	color: #000000;
-}
-footer
-{
-	clear: both;
-}	
-footer
+header, main, .date-filter, .tags-filter, ul.tags, .tape_header, .posts, footer 
 {	
-	background-color: #2c2b33;
-}
-button
-{
-	padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-	align-items: center;
-}
-footer, .post, .tag, h2, h3, h1, h6, button.add-tag, button.submit-filter
-{
-	color: #ffffff;
-}
-.tape
-{
-	float: right;
-}
-.tape
-{	
-	width: 80%;
-}
-.tape, .tags, footer, header
-{	
-	display: -webkit-inline-flex;
-	-webkit-align-items: flex-start;
-	-webkit-justify-content: space-around;
+	display: inline-flex;
+	align-items: flex-start;
+	justify-content: space-around;
 	flex-wrap: wrap;
 }
-.post
+.logo, .user_id, .add_photo, .log, .filter
 {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	width: 20%;
 }
-.post, input
+.logo, .user_id, .add_photo, .log
 {
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
-input, button.add-tag, button.calendar
+.logo, .user_id, .add_photo, .log, i
 {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	font-size: 30px;
 }
-button.calendar
+.logo, .user_id, .add_photo, .log, .filter_header, .tags_header, button.button-add-tag, .submit-filter, .tape_header, .date, .time 
 {
-	margin-left: 13%
+	font-weight: bold;
 }
-.fa-calendar-alt
-{
-	font-size: 20px;
-}
-h6
-{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-button.delete, button.edit, button.like, .in-header
+.logo, .user_id, .add_photo, .log, , .date, .time, button.delete, button.edit, button.like
 {
 	display: inline;
 }
-button.delete, button.edit, button.like
+main
 {
-	width: 30%;
-}
-.in-header
-{
-	width: 20%;
-}
-.in-header
-{
-	margin-left: 2,5%;
-	margin-right: 2,5%;
-}
-.in-header
-{
-	font-size: 30px;
-}
-i
-{
-	font-size: 30px;
-}
-.fa-bars
-{
-	color: #ffffff;
-	font-size: 15px;
-}
-button.delete
-{
-	margin-left: 1.5%;
-}
-button.edit
-{
-	margin-left: 1.5%;
-	margin-right: 1.5%;
-}
-button.like
-{
-	margin-right: 1.5%;
-}
-.filter
-{
-	width: 20%;
-}
-.filter, button.showfilter, input.input-date, input.input-tag
-{	
-	float: left;
-}
-input.input-date, input.input-tag
-{
-	width: 50%;
+	flex: 1 0 auto;
 }
 .filter, .post
 {	
 	background-color: #d4d4d4;
 }
-input
+.filter_header, .tags_header, footer, .post, li.tag, .tape_header, .author_id, button.button-add-tag, button.submit-filter, .fa-bars
 {
-	width: 90%;
+	color: #ffffff;
 }
-.tags
+.filter_header, .tape_header
+{
+	font-size: 25px;
+}
+.filter_header, .date-filter, .author-filter, .tags-filter, button.submit-filter, .tape_header, input, img
+{
+	width: 100%;
+}
+.author-filter, .input-tag, .post
+{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.author-filter, .date-filter, .tags-filter, .tags_header  
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.date-filter
+{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.filter_header
+{	
+	background-color: #000000;
+}
+.date-filter, .tags-filter
+{
+	justify-content: space-between;
+}
+.input-date
+{
+	width: 65%;
+}
+.calendar
+{
+	width: 25%;
+}
+.fa-calendar-alt, .author_id
+{
+	font-size: 20px;
+}
+.tags_header, li.tag, button.button-add-tag, button.submit-filter
+{	
+	background-color: #383838;
+}
+.tags_header, .date, .time
+{
+	font-size: 13px;
+}
+.input-tag
+{
+	width: 50%;
+}
+.add-tag
+{
+	width: 40%;
+}
+button.button-add-tag, button.submit-filter
+{
+	height: 22px;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+ul.tags, button
+{
+	list-style-type: none;
+	padding: 0;
+}
+ul.tags
 {
 	background-color: #ffffff;
 }
-.tags
+ul.tags
 {
 	height: 250px;
 	border: 2px solid #000000;
 }
-.tags
+ul.tags
 {	
 	overflow: auto;
 }
-.tag
+li.tag
 {
 	margin: 5px;
 	border-radius: 10px;
@@ -185,75 +164,81 @@ input
 	height: 17px;
 	font-size: 13px;
 }
-.tag, h6, button.add-tag, button.submit-filter
+.tape
 {	
-	background-color: #383838;
+	width: 80%;
 }
-button.add-tag, button.submit-filter
-{
-	height: 22px;
-	padding-left: 4%;
-	padding-right: 4%;
-}
-h2, h3 
-{
-	font-size: 25px;
-}
-h2, h3 , button.submit-filter
-{
-	width: 100%;
-}
-h2
-{	
-	background-color: #000000;
-}
-h3 
+.tape_header
 {	
 	background-color: #262626;
 }
-h1 
+.tape-name, .author-filter, .date-filter
 {
-	font-size: 20px;
+	width: 90%;
 }
-h1
-{	
-	background-color: #4f4f4f;
-}
-h4 
+button.showfilter
 {
-	display: inline;
-}
-h6, h4
-{
-	font-size: 13px;
-}
-h4
-{
-	color: #292929;
-}
-span 
-{
-	color: #31326e;
-}
-img
-{
-	width: 100%;
+	width: 5%;
 }
 button.showfilter
 {
 	margin: 6px;
-	width: 10%;
 }
-
+.post
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.author_id
+{	
+	background-color: #4f4f4f;
+}
+.date, .time
+{
+	color: #292929;
+}
+button.delete, button.edit, button.like
+{
+	width: 30%;
+}
+button.delete
+{
+	margin-left: 1%;
+}
+button.edit
+{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+button.like
+{
+	margin-right: 1%;
+}
+p
+{
+	color: #000000;
+}
+span.tags
+{
+	color: #31326e;
+}
+.fa-bars
+{
+	font-size: 15px;
+}
+footer
+{	
+	background-color: #2c2b33;
+}
 @media screen and (max-width: 700px)
 {
 	.post{width: 90%;}
-	.in-header{font-size: 20px;}
+	.logo, .user_id, .add_photo, .log{font-size: 20px;}
 }
 @media screen and (min-width: 700px)
 {
 	.post{width: 40%;}
-	.in-header{font-size: 30px;}
+	.logo, .user_id, .add_photo, .log{font-size: 30px;}
 }
 @media screen and (max-width: 1190px)
 {

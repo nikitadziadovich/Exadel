@@ -8,224 +8,234 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 	</head>
-	<body>
-	
-		<header>
-			
-			<div class="in-header" align="left"><b>logo</b></div>
-			<div class="in-header" align="left"><b>user.id</b></div>
-			<div class="in-header" align="center"><button><i class="fas fa-camera"></i></button></div>
-			<div class="in-header" align="right"><button><i class="fas fa-sign-out-alt"></i></button></div>
-			
-		</header>
-		<main>
+    <body>
+
+        
+        <header>
+
+            <div class="logo">logo</div>
+            <div class="user_id">user.id</div>
+            <div class="add_photo"><button><i class="fas fa-camera"></i></button></div>
+            <div class="log"><button><i class="fas fa-sign-out-alt"></i></button></div>
+
+        </header>
+        <main>
+
+            <aside class="filter">
+
+                <div class="filter_header">ФИЛЬТР</div>
+                <div class="date-filter">
+					<div class="input-date">
+					<form class="form-date" >
+						<input type="text" name="date" placeholder="Введите дату">
+					</form>
+					</div>
+					<div class="calendar">
+					<button><i class="far fa-calendar-alt"></i></button>
+					</div>
+				</div>
+				<div class="author-filter">
+					<form class="form-author">
+						<input type="text" name="author" placeholder="Введите автора">
+					</form>
+				</div>
+                <div class="tags_header">Тэги</div>
+				<div class="tags-filter">
+					<div class="input-tag">
+					<form class="form-tag">
+						<input type="text" name="date" placeholder="Введите тэг">
+					</form>
+					</div>
+					<div class="add-tag">
+					<button class="button-add-tag">Добавить</button>
+					</div>
+				</div>
+                <ul class="tags">
+
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+                    <li class="tag">tag</li>
+
+                </ul>
+                <button class="submit-filter">ПРИМЕНИТЬ ФИЛЬТР</button>
+                
+
+            </aside>
+            <div class="tape">
+
+                <div class="tape_header">
+                    <button class="showfilter"><i class="fas fa-bars"></i></button>
+                    <div class="tape-name">
+						ЛЕНТА
+					</div>
+                </div>
+                <div class="posts">
+				<div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="fas fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">user.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="delete"><i class="far fa-trash-alt"></i></i></button>
+                    <button class="edit"><i class="far fa-edit"></i></button>
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">user.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="delete"><i class="far fa-trash-alt"></i></button>
+                    <button class="edit"><i class="far fa-edit"></i></button>
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+                <div class="post">
+
+                    <div class="author_id">author.id</div>
+                    <div class="date">01.01.2000</div>
+                    <div class="time">00:00</div>
+                    <img src="files\photo.jpg">
+                    <button class="like"><i class="far fa-heart"></i></button>
+                    <p>
+                        description <span class="tags"> #tag1 #tag2</span>
+                    </p>
+
+                </div>
+				</div>
+
+                <button><i class="fas fa-chevron-down"></i></button>
+
+            </div>
+
+        </main>
+        <footer>
+
+            <div>Коллективный фото портал</div>
+            <div>Никита Дзядович</div>
+            <div>3 курс, гр. 62491</div>
+            <div>nikita.dziadovich@gmail.com</div>
+            <div>Дата изменения: 21.03.2019</div>
+
+        </footer>
 		
-		<div class="filter">
-		
-			<h2 align="center">ФИЛЬТР</h2>
-			<input class="input-date" type="text" name="date" placeholder="Введите дату">
-			<button class="calendar"><i class="far fa-calendar-alt"></i></button>
-			<input type="text" name="author" placeholder="Введите автора">
-			<h6 align="center">Тэги</h6>
-			<input class="input-tag" type="text" name="date" placeholder="Введите тэг">
-			<button class="add-tag"><b>Добавить</b></button>
-			<div class="tags">
-			
-				<div class="tag">щщщщщщщщщщщщщщщщщщщщ</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				<div class="tag">tag</div>
-				
-			</div>
-			<div align="center">
-				<button class="submit-filter"><b>ПРИМЕНИТЬ ФИЛЬТР</b></button>
-			</div>
-			
-		</div>
-		<div class="tape" align="center">
-		
-			<h3 align="center">
-				<button class="showfilter"><i class="fas fa-bars"></i></button>
-				ЛЕНТА
-			</h3>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="fas fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">user.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<button class="delete"><i class="far fa-trash-alt"></i></i></button>
-				<button class="edit"><i class="far fa-edit"></i></button>
-				<button class="like"><i class="far fa-heart"></i></button>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">user.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<button class="delete"><i class="far fa-trash-alt"></i></button>
-				<button class="edit"><i class="far fa-edit"></i></button>
-				<button class="like"><i class="far fa-heart"></i></button>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-				
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			<div class="post">
-			
-				<h1 align="center">author.id</h1>
-				<h4 align="left">01.01.2000</h4>
-				<h4 align="right">00:00</h4>
-				<img src="files\photo.jpg">
-				<div align="right">
-					<button class="like"><i class="far fa-heart"></i></button>
-				</div>
-				<p>
-					description <span> #tag1 #tag2</span>
-				</p>
-			
-			</div>
-			
-			<button><i class="fas fa-chevron-down"></i></button>
-					
-		</div>
-		
-		</main>
-		<footer>
-		
-			<div>Коллективный фото портал</div>
-			<div>Никита Дзядович</div>
-			<div>3 курс, гр. 62491</div>
-			<div>nikita.dziadovich@gmail.com</div>
-			<div>Дата изменения: 04.03.2019</div>
-		
-		</footer>
-		
-	</body>
+		<script src="script.js"></script>
+
+    </body>
 
 </html>
