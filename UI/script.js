@@ -388,8 +388,8 @@
 
         /**
          * Converts post into string
-         * @param {PhotoPost} post
-         * @returns {String}
+         * @param {PhotoPost} post - photopost
+         * @returns {String} - photopost converted to string
          */
         static toString(post) {
             let temp1 = "";
@@ -430,7 +430,7 @@
 
         /**
          * Creates a new collection consisting of valide posts from arrayofposts
-         * @param {Array<PhotoPost>} arrayofposts
+         * @param {Array<PhotoPost>} arrayofposts - array of photoposts
          */
         constructor(arrayofposts) {
             let tempposts = [];
@@ -456,7 +456,7 @@
 
         /**
          * Adds all valide posts from arrayofposts to the collection
-         * @param {Array<PhotoPost>} arrayofposts
+         * @param {Array<PhotoPost>} arrayofposts - array of photoposts
          * @returns {Array<PhotoPost>} - array of invalid posts
          */
         addAll(arrayofposts) {
@@ -489,7 +489,7 @@
          *  firstDate: Date - minimal date
          *  lastDate: Date - maximal date
          *  tags: string[] - list of tags
-         * @returns {Array<PhotoPost>}
+         * @returns {Array<PhotoPost>} - array of photoposts on the page
          */
         getPage(skip, top, filterConfig) {
             if (!skip) {
@@ -511,19 +511,19 @@
 
                 if (!filterConfig.author && !filterConfig.tags)
                     filteredPosts = filteredPosts.filter(function (item) {
-                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate)
+                        return item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate;
                     });
                 else if (!filterConfig.author)
                     filteredPosts = filteredPosts.filter(function (item) {
-                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && PostList._intersection(item.tags, filterConfig.tags).length !== 0)
+                        return item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && PostList._intersection(item.tags, filterConfig.tags).length !== 0;
                     });
                 else if (!filterConfig.tags)
                     filteredPosts = filteredPosts.filter(function (item) {
-                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author)
+                        return item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author;
                     });
                 else
                     filteredPosts = filteredPosts.filter(function (item) {
-                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author && PostList._intersection(item.tags, filterConfig.tags).length !== 0)
+                        return item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author && PostList._intersection(item.tags, filterConfig.tags).length !== 0;
                     });
             }
 
@@ -565,13 +565,15 @@
         }
 
         //callback function checks if an item is a string
-        static _isNotString = (item, i, arr) => typeof (item) !== "string";
+        static _isNotString = (item, i, arr) => typeof item !== "string";
         //callback function checks if an item has length more than 20
         static _isBiggerThan20 = (item, i, arr) => item.length > 20;
 
         /**
-         * 
-         * @param {any} photoPost
+         * Validation checking of a post
+         * Returns true if a post is valid
+         * @param {PhotoPost} photoPost - photopost
+         * @returns {Boolean} - 
          */
         static validate(photoPost) {
             
@@ -580,7 +582,7 @@
                 return false;
             }
 
-            if (typeof (photoPost.id) !== "string" || typeof (photoPost.author) !== "string" || typeof (photoPost.description) !== "string" || !(photoPost.createdAt instanceof Date) || !Array.isArray(photoPost.tags) || !Array.isArray(photoPost.likes)) {
+            if (typeof photoPost.id !== "string" || typeof photoPost.author !== "string" || typeof photoPost.description !== "string" || !(photoPost.createdAt instanceof Date) || !Array.isArray(photoPost.tags) || !Array.isArray(photoPost.likes)) {
                 return false;
             }
 
@@ -606,7 +608,7 @@
          * Adds a post to the collection after validation checking
          * Returns true when the post is added
          * @param {PhotoPost} photoPost - adding post
-         * @returns {Boolean}
+         * @returns {Boolean} -
          */
         add(photoPost) {
             if (PostList.validate(photoPost)) {
@@ -627,7 +629,7 @@
          *  tags: string[] - new list of tags
          *  likes: string[] - new list of users liked the post
          *  photoLink: string - new location of the photo
-         * @returns {Boolean}
+         * @returns {Boolean} -
          */
         edit(id, photoPost) {
             let index = this._getIndexById(id);
@@ -665,7 +667,7 @@
          * Finds a post in the collection by its identifier and removes it fron the collection
          * Returns true if the post is removed
          * @param {String} id - identifier
-         * @returns {Boolean}
+         * @returns {Boolean} -
          */
         remove(id) {
             let index = this._getIndexById(id);
