@@ -1,5 +1,6 @@
+// JavaScript source code
 ; (function () {
-    var photoPosts =
+    var photoPsts =
         [
             {
                 id: '1',
@@ -303,7 +304,7 @@
             }
         ];
 
-    testingpost1 = {
+    var testingpost1 = {
         id: '21',
         description: 'post 21',
         createdAt: new Date('2019-03-02T01:02:03'),
@@ -317,9 +318,9 @@
             [
                 ''
             ]
-    }
+    };
 
-    testingpost2 = {
+    var testingpost2 = {
         id: '21',
         description: 'post 21',
         createdAt: new Date('2019-03-02T01:02:03'),
@@ -333,210 +334,366 @@
             [
                 ''
             ]
-    }
-
-    intersection = function (posttags, filtertags) {
-        return posttags.filter(function (tag) {
-            return filtertags.indexOf(tag) != -1;
-        });
     };
 
-    getPhotoPosts = function (skip, top, filter) {
+    var testposts = [{
+        id: '30',
+        description: 'post test',
+        createdAt: new Date('2019-03-05T01:02:03'),
+        author: 'user5',
+        photoLink: 'files\photo.jpg',
+        tags:
+            [
+                'work', 'coffee'
+            ],
+        likes:
+            [
+                ''
+            ]
+    },
+        {
+            id: '31',
+            description: 'post test',
+            createdAt: new Date('2019-03-05T01:02:03'),
+            author: 'user5',
+            photoLink: 'files\photo.jpg',
+            tags:
+                [
+                    'work', 'coffee'
+                ]
+        }
+    ];
+    //just to mind it
+    class PhotoPost {
 
-        if (!skip) {
-            skip = 0;
-        };
-        if (!top) {
-            top = 10;
-        };
-
-        var filteredPosts = photoPosts;
-        if (filter) {
-  
-            if (!filter.firstDate) {
-                filter.firstDate = new Date('1970-01-01T00:00:00');
-            };
-            if (!filter.lastDate) {
-                filter.lastDate = new Date();
-            };
-
-            if (!filter.author && !filter.tags)
-                var filteredPosts = filteredPosts.filter(function (item) {
-                    return (item.createdAt > filter.firstDate && item.createdAt < filter.lastDate)
-                });
-            else if (!filter.author)
-                var filteredPosts = filteredPosts.filter(function (item) {
-                    return (item.createdAt > filter.firstDate && item.createdAt < filter.lastDate && intersection(item.tags, filter.tags).length != 0)
-                });
-            else if (!filter.tags)
-                var filteredPosts = filteredPosts.filter(function (item) {
-                    return (item.createdAt > filter.firstDate && item.createdAt < filter.lastDate && item.author == filter.author)
-                });
-            else
-                var filteredPosts = filteredPosts.filter(function (item) {
-                    return (item.createdAt > filter.firstDate && item.createdAt < filter.lastDate && item.author == filter.author && intersection(item.tags, filter.tags).length != 0)
-                });
+        /**
+         * Creates a new post without validation checking
+         * @param {String} id - identifier
+         * @param {String} description - description
+         * @param {Date} createdAt - date of creation
+         * @param {String} author - author name
+         * @param {String} photoLink - location of the photo
+         * @param {Array<String>} tags - list of tags
+         * @param {Array<String>} likes - list of users liked the post
+         */
+        constructor(id, description, createdAt, author, photoLink, tags, likes) {
+            this.id = id;
+            this.description = description;
+            this.createdAt = createdAt;
+            this.author = author;
+            this.photoLink = photoLink;
+            this.tags = tags;
+            this.likes = likes;
         }
 
-        return filteredPosts.sort(function compareDates(a, b) {
-            return b.createdAt - a.createdAt;
-        }).slice(skip, top + skip);
-    };
+        /**
+         * Converts post into string
+         * @param {PhotoPost} post
+         * @returns {String}
+         */
+        static toString(post) {
+            let temp1 = "";
+            let temp2 = "";
+            let temp = "";
+            if (post.id) {
+                temp += 'id: ' + post.id;
+            }
+            if (post.description) {
+                temp += '\ndescription: ' + post.description;
+            }
+            if (post.createdAt) {
+                temp += '\ncreation date: ' + post.createdAt.toString();
+            }
+            if (post.author) {
+                temp += '\nauthor: ' + post.author;
+            }
+            if (post.photoLink) {
+                temp += '\nphoto link: ' + post.photoLink;
+            }
+            if (post.tags) {
+                post.tags.forEach(function (item, i, arr) {
+                    temp1 += item + " ";
+                });
+                temp += '\ntags: ' + temp1;
+            }
+            if (post.likes) {
+                post.likes.forEach(function (item, i, arr) {
+                    temp2 += item + " ";
+                });
+                temp += '\nlikes: ' + temp2;
+            }
+            
+            return temp;
+        }
+    }
+    class PostList {
 
-    getPhotoPost = function (id) {
-        var post = [];
+        /**
+         * Creates a new collection consisting of valide posts from arrayofposts
+         * @param {Array<PhotoPost>} arrayofposts
+         */
+        constructor(arrayofposts) {
+            let tempposts = [];
+            arrayofposts.forEach(function (item, i, arr) {
+                if (PostList.validate(item)) {
+                    tempposts.push(item);
+                }
+            });
+            this._photoPosts = tempposts;
+        }
 
-        for (i = 0; i < photoPosts.length; i++) {
-            if (photoPosts[i].id == id) {
-                post.push(photoPosts[i]);
-                return post;
+        //the main collection of photoposts
+        get photoPosts() {
+            return this._photoPosts;
+        }
+
+        set photoPosts(value) { }
+
+        //returns an intersection of 2 arrays
+        static _intersection = (posttags, filtertags) => posttags.filter(function (tag) {
+            return filtertags.indexOf(tag) !== -1;
+        });        
+
+        /**
+         * Adds all valide posts from arrayofposts to the collection
+         * @param {Array<PhotoPost>} arrayofposts
+         * @returns {Array<PhotoPost>} - array of invalid posts
+         */
+        addAll(arrayofposts) {
+            let temppostsv = [];//valid posts
+            let temppostsinv = [];//invalid posts
+            arrayofposts.forEach(function (item, i, arr) {
+                if (PostList.validate(item)) {
+                    temppostsv.push(item);
+                }
+                else {
+                    temppostsinv.push(item);
+                }
+            });
+            this._photoPosts = this._photoPosts.concat(temppostsv);
+            return temppostsinv;
+        }
+
+        /**
+         * Clears the contents of the collection*/
+        clear() {
+            this._photoPosts = [];
+        }
+
+        /**
+         * Get photo posts using pagination params and filter config.
+         * @param {any} skip - count of posts to skip in a filtered list
+         * @param {any} top - max count of posts to return
+         * @param {any} filterConfig - filter config object, supports:
+         *  author: string - the author of the post
+         *  firstDate: Date - minimal date
+         *  lastDate: Date - maximal date
+         *  tags: string[] - list of tags
+         * @returns {Array<PhotoPost>}
+         */
+        getPage(skip, top, filterConfig) {
+            if (!skip) {
+                skip = 0;
+            }
+            if (!top) {
+                top = 10;
+            }
+
+            let filteredPosts = this._photoPosts;
+            if (filterConfig) {
+
+                if (!filterConfig.firstDate) {
+                    filterConfig.firstDate = new Date('1970-01-01T00:00:00');
+                }
+                if (!filterConfig.lastDate) {
+                    filterConfig.lastDate = new Date();
+                }
+
+                if (!filterConfig.author && !filterConfig.tags)
+                    filteredPosts = filteredPosts.filter(function (item) {
+                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate)
+                    });
+                else if (!filterConfig.author)
+                    filteredPosts = filteredPosts.filter(function (item) {
+                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && PostList._intersection(item.tags, filterConfig.tags).length !== 0)
+                    });
+                else if (!filterConfig.tags)
+                    filteredPosts = filteredPosts.filter(function (item) {
+                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author)
+                    });
+                else
+                    filteredPosts = filteredPosts.filter(function (item) {
+                        return (item.createdAt > filterConfig.firstDate && item.createdAt < filterConfig.lastDate && item.author === filterConfig.author && PostList._intersection(item.tags, filterConfig.tags).length !== 0)
+                    });
+            }
+
+            return filteredPosts.sort(function compareDates(a, b) {
+                return b.createdAt - a.createdAt;
+            }).slice(skip, top + skip);
+        }
+
+        /**
+         * Gets an index of post in the collection by its identifier 
+         * Returns null when the post wasn't found
+         * @param {String} id - identifier
+         * @returns {Number} - index
+         */
+        _getIndexById(id) {
+            let index = this._photoPosts.findIndex(function (item, i, arr) { return item.id === id; });
+            if (index === -1) {
+                return null;//post not found
+            }
+            else {
+                return index;
             }
         }
 
-        return post;
-    };
+        /**
+         * Gets a post from the collecntion by its identifier
+         * Returns null when the post wasn't found
+         * @param {String} id - identifier
+         * @returns {PhotoPost} - post
+         */
+        get(id) {
+            let index = this._getIndexById(id);
+            if (index) {
+                return this._photoPosts[index];
+            }
+            else {
+                return null;
+            }
+        }
 
-    IsNotString = function (item, i, arr) {
-        return typeof (item) != "string";
+        //callback function checks if an item is a string
+        static _isNotString = (item, i, arr) => typeof (item) !== "string";
+        //callback function checks if an item has length more than 20
+        static _isBiggerThan20 = (item, i, arr) => item.length > 20;
+
+        /**
+         * 
+         * @param {any} photoPost
+         */
+        static validate(photoPost) {
+            
+
+            if (!photoPost.id || !photoPost.author || !photoPost.description || !photoPost.createdAt || !photoPost.tags || !photoPost.likes) {
+                return false;
+            }
+
+            if (typeof (photoPost.id) !== "string" || typeof (photoPost.author) !== "string" || typeof (photoPost.description) !== "string" || !(photoPost.createdAt instanceof Date) || !Array.isArray(photoPost.tags) || !Array.isArray(photoPost.likes)) {
+                return false;
+            }
+
+            if (photoPost.description.length >= 200) {
+                return false;
+            }
+
+            if (photoPost.tags.some(PostList._isNotString)) {
+                return false;
+            }
+            if (photoPost.likes.some(PostList._isNotString)) {
+                return false;
+            }
+
+            if (photoPost.tags.some(PostList._isBiggerThan20)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        /**
+         * Adds a post to the collection after validation checking
+         * Returns true when the post is added
+         * @param {PhotoPost} photoPost - adding post
+         * @returns {Boolean}
+         */
+        add(photoPost) {
+            if (PostList.validate(photoPost)) {
+                this._photoPosts.push(photoPost);
+                return true;//post added
+            }
+            else {
+                return false;//validation error
+            }
+        }
+
+        /**
+         * Finds a post in the collection by its identifier and changes some fields
+         * Returns true if the post is editted
+         * @param {String} id - identifier
+         * @param {Object} photoPost - new fields, supports:
+         *  description: string - new description
+         *  tags: string[] - new list of tags
+         *  likes: string[] - new list of users liked the post
+         *  photoLink: string - new location of the photo
+         * @returns {Boolean}
+         */
+        edit(id, photoPost) {
+            let index = this._getIndexById(id);
+            let temppost = this.get(id);
+            if (!temppost) {
+                return false;//post not found
+            }
+
+            if (photoPost.author || photoPost.createdAt || photoPost.id) {
+                return false;
+            }
+            if (photoPost.description) {
+                temppost.description = photoPost.description;
+            }
+            if (photoPost.tags) {
+                temppost.tags = photoPost.tags;
+            }
+            if (photoPost.likes) {
+                temppost.likes = photoPost.likes;
+            }
+            if (photoPost.photoLink) {
+                temppost.photoLink = photoPost.photoLink;
+            }
+
+            if (PostList.validate(temppost)) {
+                this._photoPosts[index] = temppost;
+                return true;//post edited
+            }
+            else {
+                return false;//validation error
+            }
+        }
+
+        /**
+         * Finds a post in the collection by its identifier and removes it fron the collection
+         * Returns true if the post is removed
+         * @param {String} id - identifier
+         * @returns {Boolean}
+         */
+        remove(id) {
+            let index = this._getIndexById(id);
+            if (!index) {
+                return false;//post not found
+            }
+            this._photoPosts.splice(index, 1);
+            return true;//post deleted
+        }
+
     }
-
-    IsBiggerThan20 = function (item, i, arr) {
-        return item.length > 20;
-    }
-
-    validatePhotoPost = function (post) {
-        if (!post.id || !post.author || !post.description || !post.createdAt || !post.tags || !post.likes) {
-            return false;
-        };
-
-        if (typeof (post.id) != "string" || typeof (post.author) != "string" || typeof (post.description) != "string" || !(post.createdAt instanceof Date) || !Array.isArray(post.tags) || !Array.isArray(post.likes)) {
-            return false;
-        };
-
-        if (post.description.length >= 200) {
-            return false;
-        };
-
-        if (post.tags.some(IsNotString)) {
-            return false;
-        };
-        if (post.likes.some(IsNotString)) {
-            return false;
-        };
-
-        if (post.tags.some(IsBiggerThan20)) {
-            return false;
-        };
-
-        return true;
-    };
-
-    addPhotoPost = function (post) {
-        if (validatePhotoPost(post)) {
-
-            photoPosts.push(post);
-            console.log("successfully added");
-        }
-        else {
-            console.log("error");
-        }
-    };
-
-    editPhotoPost = function (id, post) {
-        var index = photoPosts.findIndex(function (item, i, arr) { return item.id == id; });
-
-        if (index == -1) {
-            console.log("post with id " + id + " not found");
-            return;
-        };
-
-        if (post.id || post.author || post.createdAt) {
-            console.log("you are not able to change id, author or creation time");
-            return;
-        };
-
-        var temppost = photoPosts[index];
-
-        if (post.description) {
-            temppost.description = post.description;
-        }
-        if (post.tags) {
-            temppost.tags = post.tags;
-        };
-        if (post.likes) {
-            temppost.likes = post.likes;
-        };
-        if (post.photoLink) {
-            temppost.photoLink = post.photoLink;
-        };
-
-        if (validatePhotoPost(temppost)) {
-            photoPosts[index] = temppost;
-            console.log("successfully changed");
-        }
-        else {
-            console.log("validation error");
-        };
-
-    };
-
-    deletePhotoPost = function (id) {
-        index = photoPosts.findIndex(function (item, i, arr) { return item.id == id; });
-
-        if (index == -1) {
-            console.log("post with id " + id + " not found");
-            return;
-        };
-
-        delete photoPosts[index];
-        console.log("successfully deleted");
-    }
-
-    OutputPosts = function (posts) {
-        if (!posts || posts.length == 0) {
-            console.log("nothing found");
-        }
-        else {
-            posts.forEach(function (item, i, arr) {
-                console.log("id: " + item.id + ", descr: " + item.description + ", creation: " + item.createdAt.toString() + ", author:" + item.author + ", tags:");
-                item.tags.forEach(function (item, i, arr) {
-                    console.log(item);
-                });
-                console.log(", likes: ");
-                item.likes.forEach(function (item, i, arr) {
-                    console.log(item);
-                });
-            });
-        }
-
-    };
-
     (function () {
-        //var tempPosts = getPhotoPosts(0, 5); //screenshot_1
-        //var tempPosts = getPhotoPosts(5, 5); //screenshot_2
-        //var tempPosts = getPhotoPosts(); //screenshot_3
-        //var tempPosts = getPhotoPosts(0, 5, { firstDate: new Date('2019-02-16T00:00:00') }); //screenshot_4
-        //var tempPosts = getPhotoPosts(0, 5, { firstDate: new Date('2019-02-16T00:00:00'), lastDate: new Date('2019-02-28T00:00:00') }); //screenshot_5
-        //var tempPosts = getPhotoPosts(0, 5, { author: "user5" }); //screenshot_6
-        //var tempPosts = getPhotoPosts(0, 10, { tags: ["work"] }); //screenshot_7
-        //var tempPosts = getPhotoPosts(0, 10, { firstDate: new Date('2019-01-10T00:00:00'), author: "user1", tags: ["love", "friends", "winter"] }); //screenshot_8
-        //var tempPosts = getPhotoPost("1"); //screenshot_9
-        //var tempPosts = getPhotoPost("21"); //screenshot_10
-        //console.log(validatePhotoPost(photoPosts[1])); //screenshot_11
-        //addPhotoPost(testingpost1); //screenshot_12
-        //addPhotoPost(testingpost2); //screenshot_13
-        /*tempPosts = getPhotoPost("1"); //screenshot_14
-        OutputPosts(tempPosts); 
-        editPhotoPost("1", { description: "one" }); 
-        tempPosts = getPhotoPost("1"); 
-        OutputPosts(tempPosts);*/ 
-        //editPhotoPost("21", { description: "one" }); //screenshot_15
-        //editPhotoPost("1", { author: "one" }); //screenshot_16
-        /*tempPosts = getPhotoPosts(0, 2); //screenshot_17
-        OutputPosts(tempPosts);
-        deletePhotoPost("19");
-        tempPosts = getPhotoPosts(0, 2);
-        OutputPosts(tempPosts);*/
+        var result;
+        var psts = new PostList(photoPsts);
+        //var outputpsts = psts.getPage();//screenshot 1
+        //outputpsts = psts.getPage(3, 5, {});//screenshot 2
+        //result = psts.edit("19", { author: "newauthor" });//screenshot3
+        //result = psts.edit("19", { description: "new descript" });//screenshot 4
+        /*var output = psts.addAll(testposts);//screenshot 5
+        var outputpsts = psts.getPage(0, 3, {});*/
+        /*psts.add(testingpost1);//screenshot 6
+        psts.add(testingpost2);
+        var outputpsts = psts.getPage(0, 3, {});*/
+        //psts.remove("19");//screenshot 7
+        //psts.clear();//screenshot 8
+        //var outputpsts = psts.getPage(0, 10, {tags:['work']});//screenshot 9
+        outputpsts.forEach(function (item, i, arr) {
+            console.log(PhotoPost.toString(item));
+        });
     }());
 }());
-
