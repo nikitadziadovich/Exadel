@@ -392,54 +392,54 @@
          * @returns {String} - photopost converted to string
          */
         static toString(post) {
-            let temp1 = "";
-            let temp2 = "";
-            let temp = "";
+            let tagsS = "";
+            let likesS = "";
+            let postS = "";
             if (post.id) {
-                temp += 'id: ' + post.id;
+                postS += 'id: ' + post.id;
             }
             if (post.description) {
-                temp += '\ndescription: ' + post.description;
+                postS += '\ndescription: ' + post.description;
             }
             if (post.createdAt) {
-                temp += '\ncreation date: ' + post.createdAt.toString();
+                postS += '\ncreation date: ' + post.createdAt.toString();
             }
             if (post.author) {
-                temp += '\nauthor: ' + post.author;
+                postS += '\nauthor: ' + post.author;
             }
             if (post.photoLink) {
-                temp += '\nphoto link: ' + post.photoLink;
+                postS += '\nphoto link: ' + post.photoLink;
             }
             if (post.tags) {
                 post.tags.forEach(function (item, i, arr) {
-                    temp1 += item + " ";
+                    tagsS += item + " ";
                 });
-                temp += '\ntags: ' + temp1;
+                postS += '\ntags: ' + tagsS;
             }
             if (post.likes) {
                 post.likes.forEach(function (item, i, arr) {
-                    temp2 += item + " ";
+                    likesS += item + " ";
                 });
-                temp += '\nlikes: ' + temp2;
+                postS += '\nlikes: ' + likesS;
             }
             
-            return temp;
+            return postS;
         }
     }
     class PostList {
 
         /**
-         * Creates a new collection consisting of valide posts from arrayofposts
-         * @param {Array<PhotoPost>} arrayofposts - array of photoposts
+         * Creates a new collection consisting of valide posts from arrayOfPosts
+         * @param {Array<PhotoPost>} arrayOfPosts - array of photoposts
          */
-        constructor(arrayofposts) {
-            let tempposts = [];
-            arrayofposts.forEach(function (item, i, arr) {
+        constructor(arrayOfPosts) {
+            let valdatedPosts = [];
+            arrayOfPosts.forEach(function (item, i, arr) {
                 if (PostList.validate(item)) {
-                    tempposts.push(item);
+                    valdatedPosts.push(item);
                 }
             });
-            this._photoPosts = tempposts;
+            this._photoPosts = valdatedPosts;
         }
 
         //the main collection of photoposts
@@ -450,28 +450,28 @@
         set photoPosts(value) { }
 
         //returns an intersection of 2 arrays
-        static _intersection = (posttags, filtertags) => posttags.filter(function (tag) {
-            return filtertags.indexOf(tag) !== -1;
+        static _intersection = (postTags, filterTags) => postTags.filter(function (tag) {
+            return filterTags.indexOf(tag) !== -1;
         });        
 
         /**
-         * Adds all valide posts from arrayofposts to the collection
-         * @param {Array<PhotoPost>} arrayofposts - array of photoposts
+         * Adds all valide posts from arrayOfPosts to the collection
+         * @param {Array<PhotoPost>} arrayOfPosts - array of photoposts
          * @returns {Array<PhotoPost>} - array of invalid posts
          */
-        addAll(arrayofposts) {
-            let temppostsv = [];//valid posts
-            let temppostsinv = [];//invalid posts
-            arrayofposts.forEach(function (item, i, arr) {
+        addAll(arrayOfPosts) {
+            let validPosts = [];
+            let invalidPosts = [];
+            arrayOfPosts.forEach(function (item, i, arr) {
                 if (PostList.validate(item)) {
-                    temppostsv.push(item);
+                    validPosts.push(item);
                 }
                 else {
-                    temppostsinv.push(item);
+                    invalidPosts.push(item);
                 }
             });
-            this._photoPosts = this._photoPosts.concat(temppostsv);
-            return temppostsinv;
+            this._photoPosts = this._photoPosts.concat(validPosts);
+            return invalidPosts;
         }
 
         /**
@@ -633,8 +633,8 @@
          */
         edit(id, photoPost) {
             let index = this._getIndexById(id);
-            let temppost = this.get(id);
-            if (!temppost) {
+            let editingPost = this.get(id);
+            if (!editingPost) {
                 return false;//post not found
             }
 
@@ -642,20 +642,20 @@
                 return false;
             }
             if (photoPost.description) {
-                temppost.description = photoPost.description;
+                editingPost.description = photoPost.description;
             }
             if (photoPost.tags) {
-                temppost.tags = photoPost.tags;
+                editingPost.tags = photoPost.tags;
             }
             if (photoPost.likes) {
-                temppost.likes = photoPost.likes;
+                editingPost.likes = photoPost.likes;
             }
             if (photoPost.photoLink) {
-                temppost.photoLink = photoPost.photoLink;
+                editingPost.photoLink = photoPost.photoLink;
             }
 
-            if (PostList.validate(temppost)) {
-                this._photoPosts[index] = temppost;
+            if (PostList.validate(editingPost)) {
+                this._photoPosts[index] = editingPost;
                 return true;//post edited
             }
             else {
